@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +7,6 @@
 <title>jeremy67</title>
 
 <style>
-
-/* ==========================================
-   BASE
-========================================== */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -26,223 +20,128 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            #30165c 0%,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            #210f42 0%,
-            transparent 35%
-        ),
+        radial-gradient(circle at 20% 20%, #30165c 0%, transparent 35%),
+        radial-gradient(circle at 80% 70%, #210f42 0%, transparent 35%),
         #08060d;
-
     color: white;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* ==========================================
-   BACKGROUND
-========================================== */
+/* BACKGROUND */
 
 #stars {
     position: fixed;
     inset: 0;
-
     pointer-events: none;
     z-index: -1;
-
     overflow: hidden;
 }
 
 .star {
     position: absolute;
-
-    width: 3px;
-    height: 3px;
-
     border-radius: 50%;
-
     background: white;
-
     opacity: .45;
-
-    animation:
-        floatStar linear infinite;
+    animation: floatStar linear infinite;
 }
 
 @keyframes floatStar {
-
     from {
-        transform:
-            translateY(100vh);
+        transform: translateY(100vh);
     }
-
     to {
-        transform:
-            translateY(-100px);
+        transform: translateY(-100px);
     }
 }
 
-
-/* ==========================================
-   NAVIGATION
-========================================== */
+/* NAV */
 
 nav {
     position: fixed;
-
     top: 15px;
     left: 50%;
+    transform: translateX(-50%);
 
-    transform:
-        translateX(-50%);
-
-    width:
-        min(850px, 92%);
+    width: min(850px, 92%);
 
     display: flex;
-
     align-items: center;
+    justify-content: space-between;
 
-    justify-content:
-        space-between;
+    padding: 13px 20px;
 
-    padding:
-        13px 20px;
+    background: rgba(20, 14, 30, .65);
+    backdrop-filter: blur(18px);
 
-    background:
-        rgba(20, 14, 30, .65);
-
-    backdrop-filter:
-        blur(18px);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-radius:
-        18px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 18px;
 
     z-index: 100;
 }
 
 .logo {
-    color:
-        #b78aff;
-
-    font-weight:
-        800;
-
-    font-size:
-        20px;
+    color: #b78aff;
+    font-weight: 800;
+    font-size: 20px;
 }
 
 nav div {
     display: flex;
-
-    gap:
-        17px;
+    gap: 17px;
 }
 
 nav a {
-    color:
-        #c9c1d5;
-
-    text-decoration:
-        none;
-
-    font-size:
-        14px;
-
-    transition:
-        .2s;
+    color: #c9c1d5;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .2s;
 }
 
 nav a:hover {
-    color:
-        #b78aff;
+    color: #b78aff;
 }
 
-
-/* ==========================================
-   HERO
-========================================== */
+/* HERO */
 
 .hero {
-    min-height:
-        100vh;
+    min-height: 100vh;
 
-    display:
-        flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
+    text-align: center;
 
-    justify-content:
-        center;
-
-    text-align:
-        center;
-
-    padding:
-        100px 20px 50px;
+    padding: 100px 20px 50px;
 }
 
 .hero-content {
-    animation:
-        appear .8s ease;
+    animation: appear .8s ease;
 }
 
 @keyframes appear {
-
     from {
         opacity: 0;
-
-        transform:
-            translateY(25px);
+        transform: translateY(25px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
 .mini {
-    color:
-        #aa8dd4;
-
-    letter-spacing:
-        4px;
-
-    font-size:
-        12px;
-
-    margin-bottom:
-        12px;
+    color: #aa8dd4;
+    letter-spacing: 4px;
+    font-size: 12px;
+    margin-bottom: 12px;
 }
 
 h1 {
-    font-size:
-        clamp(
-            60px,
-            12vw,
-            120px
-        );
-
-    line-height:
-        .95;
+    font-size: clamp(60px, 12vw, 120px);
+    line-height: .95;
 
     background:
         linear-gradient(
@@ -252,278 +151,168 @@ h1 {
             #9565ff
         );
 
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    color:
-        transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
     text-shadow:
-        0 0 60px
-        rgba(149,101,255,.2);
+        0 0 60px rgba(149,101,255,.2);
 }
 
 .hero p {
-    max-width:
-        520px;
+    max-width: 520px;
+    margin: 22px auto;
 
-    margin:
-        22px auto;
-
-    color:
-        #aaa4b3;
-
-    font-size:
-        17px;
-
-    line-height:
-        1.6;
+    color: #aaa4b3;
+    font-size: 17px;
+    line-height: 1.6;
 }
 
-
-/* ==========================================
-   BUTTONS
-========================================== */
+/* BUTTONS */
 
 .buttons {
     display: flex;
-
-    justify-content:
-        center;
-
-    gap:
-        12px;
-
-    flex-wrap:
-        wrap;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .button {
-    display:
-        inline-block;
+    display: inline-block;
 
-    padding:
-        13px 23px;
+    padding: 13px 23px;
 
-    border:
-        none;
+    border: none;
+    border-radius: 13px;
 
-    border-radius:
-        13px;
+    text-decoration: none;
+    color: white;
 
-    text-decoration:
-        none;
-
-    color:
-        white;
-
-    background:
-        #8c59ef;
+    background: #8c59ef;
 
     box-shadow:
-        0 8px 30px
-        rgba(140,89,239,.25);
+        0 8px 30px rgba(140,89,239,.25);
 
-    transition:
-        .25s;
-
-    cursor:
-        pointer;
+    transition: .25s;
+    cursor: pointer;
 }
 
 .button:hover {
-    transform:
-        translateY(-3px)
-        scale(1.02);
-
-    background:
-        #a477ff;
+    transform: translateY(-3px) scale(1.02);
+    background: #a477ff;
 }
 
 .button.secondary {
-    background:
-        rgba(255,255,255,.06);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    box-shadow:
-        none;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: none;
 }
 
-
-/* ==========================================
-   SECTIONS
-========================================== */
+/* SECTIONS */
 
 section {
-    width:
-        min(1000px, 90%);
-
-    margin:
-        auto;
-
-    padding:
-        100px 0;
+    width: min(1000px, 90%);
+    margin: auto;
+    padding: 100px 0;
 }
 
 .section-title {
-    text-align:
-        center;
-
-    margin-bottom:
-        35px;
+    text-align: center;
+    margin-bottom: 35px;
 }
 
 .section-title h2 {
-    font-size:
-        36px;
-
-    margin-bottom:
-        8px;
+    font-size: 36px;
+    margin-bottom: 8px;
 }
 
 .section-title p {
-    color:
-        #8f8799;
+    color: #8f8799;
 }
 
-
-/* ==========================================
-   CARDS
-========================================== */
+/* CARDS */
 
 .grid {
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px, 1fr)
-        );
+        repeat(auto-fit, minmax(220px, 1fr));
 
-    gap:
-        18px;
+    gap: 18px;
 }
 
 .card {
-    min-height:
-        180px;
+    padding: 25px;
 
-    padding:
-        25px;
-
-    background:
-        rgba(255,255,255,.045);
+    background: rgba(255,255,255,.045);
 
     border:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(12px);
 
-    transition:
-        .3s;
+    transition: .3s;
 }
 
 .card:hover {
-    transform:
-        translateY(-7px);
+    transform: translateY(-7px);
 
     border-color:
         rgba(167,119,255,.5);
 
     box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.25);
+        0 20px 50px rgba(0,0,0,.25);
 }
 
 .card-icon {
-    font-size:
-        30px;
-
-    margin-bottom:
-        18px;
+    font-size: 30px;
+    margin-bottom: 18px;
 }
 
 .card h3 {
-    margin-bottom:
-        9px;
+    margin-bottom: 9px;
 }
 
 .card p {
-    color:
-        #9991a5;
-
-    line-height:
-        1.5;
-
-    font-size:
-        14px;
+    color: #9991a5;
+    line-height: 1.5;
+    font-size: 14px;
 }
 
-
-/* ==========================================
-   ABOUT
-========================================== */
+/* ABOUT */
 
 .about {
-    text-align:
-        center;
+    text-align: center;
 
-    max-width:
-        650px;
+    max-width: 650px;
+    margin: auto;
 
-    margin:
-        auto;
+    padding: 35px;
 
-    padding:
-        35px;
-
-    border-radius:
-        25px;
+    border-radius: 25px;
 
     background:
         rgba(255,255,255,.04);
 
     border:
-        1px solid
-        rgba(255,255,255,.08);
+        1px solid rgba(255,255,255,.08);
 }
 
 .avatar {
-    width:
-        100px;
+    width: 100px;
+    height: 100px;
 
-    height:
-        100px;
+    margin: 0 auto 20px;
 
-    margin:
-        0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display:
-        flex;
+    border-radius: 50%;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        50%;
-
-    font-size:
-        35px;
+    font-size: 35px;
 
     background:
         linear-gradient(
@@ -533,69 +322,39 @@ section {
         );
 
     box-shadow:
-        0 0 45px
-        rgba(149,101,255,.35);
+        0 0 45px rgba(149,101,255,.35);
 }
 
 .about p {
-    color:
-        #aaa4b3;
-
-    line-height:
-        1.7;
-
-    margin-top:
-        13px;
+    color: #aaa4b3;
+    line-height: 1.7;
+    margin-top: 13px;
 }
 
-
-/* ==========================================
-   ROBLOX SCRIPT CARD
-========================================== */
+/* ROBLOX */
 
 .roblox-card {
-    max-width:
-        680px;
-
-    margin:
-        auto;
+    max-width: 680px;
+    margin: auto;
 }
 
 .script-header {
-    display:
-        flex;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-    align-items:
-        center;
-
-    gap:
-        15px;
-
-    margin-bottom:
-        20px;
+    margin-bottom: 20px;
 }
 
 .script-icon {
-    width:
-        58px;
+    width: 58px;
+    height: 58px;
 
-    height:
-        58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    flex-shrink:
-        0;
-
-    border-radius:
-        16px;
+    border-radius: 16px;
 
     background:
         linear-gradient(
@@ -604,226 +363,139 @@ section {
             #54268f
         );
 
-    font-size:
-        27px;
+    font-size: 27px;
 
     box-shadow:
-        0 0 30px
-        rgba(149,101,255,.20);
-}
-
-.script-info h3 {
-    margin-bottom:
-        5px;
+        0 0 30px rgba(149,101,255,.2);
 }
 
 .script-info span {
-    color:
-        #81798c;
-
-    font-size:
-        13px;
+    color: #81798c;
+    font-size: 13px;
 }
 
-
-/* ==========================================
-   KEY
-========================================== */
+/* KEY */
 
 .key-title {
-    margin-top:
-        23px;
+    margin-top: 23px;
+    margin-bottom: 9px;
 
-    margin-bottom:
-        9px;
+    color: #aaa4b3;
 
-    color:
-        #aaa4b3;
+    font-size: 12px;
+    font-weight: bold;
 
-    font-size:
-        12px;
-
-    font-weight:
-        bold;
-
-    letter-spacing:
-        2px;
+    letter-spacing: 2px;
 }
 
 .key-box {
-    padding:
-        14px;
+    padding: 14px;
 
-    display:
-        flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    align-items:
-        center;
+    gap: 12px;
 
-    justify-content:
-        space-between;
-
-    gap:
-        12px;
-
-    background:
-        rgba(0,0,0,.30);
+    background: rgba(0,0,0,.30);
 
     border:
-        1px solid
-        rgba(167,119,255,.30);
+        1px solid rgba(167,119,255,.30);
 
-    border-radius:
-        13px;
+    border-radius: 13px;
 }
 
 .key-box code {
-    color:
-        #d4bcff;
+    color: #d4bcff;
+    font-size: 17px;
 
-    font-size:
-        17px;
-
-    word-break:
-        break-all;
+    word-break: break-all;
 }
 
 .copy-key {
-    border:
-        0;
+    border: 0;
 
-    padding:
-        10px 15px;
+    padding: 10px 15px;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
-    background:
-        #9565ff;
+    background: #9565ff;
 
-    color:
-        white;
+    color: white;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    transition:
-        .2s;
-
-    white-space:
-        nowrap;
+    transition: .2s;
 }
 
 .copy-key:hover {
-    background:
-        #ad83ff;
-
-    transform:
-        scale(1.03);
+    background: #ad83ff;
+    transform: scale(1.03);
 }
 
 .copy-key:disabled {
-    opacity:
-        .45;
-
-    cursor:
-        not-allowed;
-
-    transform:
-        none;
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .key-status {
-    min-height:
-        22px;
+    min-height: 22px;
 
-    margin-top:
-        9px;
+    margin-top: 9px;
 
-    color:
-        #91899b;
+    color: #91899b;
 
-    font-size:
-        13px;
+    font-size: 13px;
 }
 
-
-/* ==========================================
-   LOADER
-========================================== */
+/* LOADER */
 
 .script-code {
-    margin-top:
-        15px;
+    margin-top: 20px;
 }
 
 .script-code pre {
-    padding:
-        15px;
+    padding: 15px;
 
-    overflow-x:
-        auto;
+    overflow-x: auto;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    background:
-        rgba(0,0,0,.35);
+    background: rgba(0,0,0,.35);
 
     border:
-        1px solid
-        rgba(255,255,255,.07);
+        1px solid rgba(255,255,255,.07);
 
-    color:
-        #cbb5ef;
+    color: #cbb5ef;
 
-    font-size:
-        12px;
-
-    line-height:
-        1.5;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
-
-/* ==========================================
-   GALLERY
-========================================== */
+/* GALLERY */
 
 .gallery {
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(180px, 1fr)
-        );
+        repeat(auto-fit, minmax(180px, 1fr));
 
-    gap:
-        15px;
+    gap: 15px;
 }
 
 .gallery-item {
-    aspect-ratio:
-        1;
+    aspect-ratio: 1;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    display:
-        flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    font-size:
-        45px;
+    font-size: 45px;
 
     background:
         linear-gradient(
@@ -833,157 +505,107 @@ section {
         );
 
     border:
-        1px solid
-        rgba(255,255,255,.07);
+        1px solid rgba(255,255,255,.07);
 
-    transition:
-        .25s;
+    transition: .25s;
 }
 
 .gallery-item:hover {
-    transform:
-        scale(1.03);
-
-    border-color:
-        #9565ff;
+    transform: scale(1.03);
+    border-color: #9565ff;
 }
 
-
-/* ==========================================
-   SECRET
-========================================== */
+/* SECRET */
 
 #secret67 {
-    cursor:
-        pointer;
+    cursor: pointer;
+    user-select: none;
 
-    user-select:
-        none;
+    display: inline-block;
 
-    display:
-        inline-block;
-
-    transition:
-        .15s;
+    transition: .15s;
 }
 
 .secret-message {
-    position:
-        fixed;
+    position: fixed;
 
-    left:
-        50%;
-
-    bottom:
-        30px;
+    left: 50%;
+    bottom: 30px;
 
     transform:
         translateX(-50%)
         translateY(100px);
 
-    padding:
-        14px 25px;
+    padding: 14px 25px;
 
-    border-radius:
-        15px;
+    border-radius: 15px;
 
-    background:
-        #9b67ff;
+    background: #9b67ff;
 
-    color:
-        white;
+    color: white;
 
-    opacity:
-        0;
+    opacity: 0;
 
-    transition:
-        .4s;
+    transition: .4s;
 
-    z-index:
-        500;
+    z-index: 500;
 }
 
 .secret-message.show {
-    opacity:
-        1;
+    opacity: 1;
 
     transform:
         translateX(-50%)
         translateY(0);
 }
 
-
-/* ==========================================
-   FOOTER
-========================================== */
+/* FOOTER */
 
 footer {
-    text-align:
-        center;
+    text-align: center;
 
-    padding:
-        50px 20px;
+    padding: 50px 20px;
 
-    color:
-        #625c6c;
+    color: #625c6c;
 
-    font-size:
-        13px;
+    font-size: 13px;
 }
 
-
-/* ==========================================
-   MOBILE
-========================================== */
+/* MOBILE */
 
 @media(max-width: 650px) {
 
     nav {
-        justify-content:
-            center;
+        justify-content: center;
     }
 
     nav div {
-        display:
-            none;
+        display: none;
     }
 
     section {
-        padding:
-            70px 0;
+        padding: 70px 0;
     }
 
     .key-box {
-        flex-direction:
-            column;
-
-        align-items:
-            stretch;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .copy-key {
-        width:
-            100%;
+        width: 100%;
     }
 }
 
 </style>
 </head>
 
-
 <body>
-
-
-<!-- ==========================================
-     BACKGROUND
-========================================== -->
 
 <div id="stars"></div>
 
 
-<!-- ==========================================
-     NAVIGATION
-========================================== -->
+<!-- NAV -->
 
 <nav>
 
@@ -1014,9 +636,7 @@ footer {
 </nav>
 
 
-<!-- ==========================================
-     HERO
-========================================== -->
+<!-- HERO -->
 
 <div class="hero">
 
@@ -1059,9 +679,7 @@ footer {
 </div>
 
 
-<!-- ==========================================
-     ABOUT
-========================================== -->
+<!-- ABOUT -->
 
 <section id="about">
 
@@ -1076,7 +694,6 @@ footer {
         </p>
 
     </div>
-
 
     <div class="about">
 
@@ -1100,9 +717,7 @@ footer {
 </section>
 
 
-<!-- ==========================================
-     PROJECTS
-========================================== -->
+<!-- PROJECTS -->
 
 <section id="projects">
 
@@ -1117,7 +732,6 @@ footer {
         </p>
 
     </div>
-
 
     <div class="grid">
 
@@ -1138,7 +752,6 @@ footer {
 
         </div>
 
-
         <div class="card">
 
             <div class="card-icon">
@@ -1155,7 +768,6 @@ footer {
             </p>
 
         </div>
-
 
         <div class="card">
 
@@ -1179,9 +791,7 @@ footer {
 </section>
 
 
-<!-- ==========================================
-     ROBLOX SCRIPTS
-========================================== -->
+<!-- ROBLOX -->
 
 <section id="roblox">
 
@@ -1196,7 +806,6 @@ footer {
         </p>
 
     </div>
-
 
     <div class="card roblox-card">
 
@@ -1220,20 +829,16 @@ footer {
 
         </div>
 
-
         <p>
-            Получи текущий ключ ниже,
-            вставь его в Key System
-            и запусти FembMenu.
+            Получи текущий ключ,
+            скопируй его и введи
+            в Key System.
         </p>
 
-
-        <!-- KEY -->
 
         <div class="key-title">
             CURRENT KEY
         </div>
-
 
         <div class="key-box">
 
@@ -1252,7 +857,6 @@ footer {
 
         </div>
 
-
         <div
             id="keyStatus"
             class="key-status"
@@ -1260,8 +864,6 @@ footer {
             Получаем актуальный ключ...
         </div>
 
-
-        <!-- LOADER -->
 
         <div class="script-code">
 
@@ -1285,9 +887,7 @@ footer {
 </section>
 
 
-<!-- ==========================================
-     GALLERY
-========================================== -->
+<!-- GALLERY -->
 
 <section id="gallery">
 
@@ -1303,40 +903,22 @@ footer {
 
     </div>
 
-
     <div class="gallery">
 
-        <div class="gallery-item">
-            ☁
-        </div>
-
-        <div class="gallery-item">
-            ☾
-        </div>
-
-        <div class="gallery-item">
-            ♡
-        </div>
-
-        <div class="gallery-item">
-            ✦
-        </div>
+        <div class="gallery-item">☁</div>
+        <div class="gallery-item">☾</div>
+        <div class="gallery-item">♡</div>
+        <div class="gallery-item">✦</div>
 
     </div>
 
 </section>
 
 
-<!-- ==========================================
-     FOOTER
-========================================== -->
-
 <footer>
     made with ♡ • jeremy67 • 2026
 </footer>
 
-
-<!-- SECRET -->
 
 <div
     class="secret-message"
@@ -1348,101 +930,56 @@ footer {
 
 <script>
 
-/* ==========================================
-   НАСТРОЙКИ
-========================================== */
-
-/*
-    СЮДА потом вставляем адрес API.
-
-    Например:
-
-    const API_URL =
-        "https://api.example.com";
-
-    ВАЖНО:
-    сюда НЕ нужно писать сам ключ.
-*/
+/* ==========================
+   API
+========================== */
 
 const API_URL =
-    "https://ТВОЙ-API-АДРЕС";
+    "https://jeremy67-key.golopopekqq290.workers.dev";
 
 
-/* ==========================================
+/* ==========================
    STARS
-========================================== */
+========================== */
 
 const stars =
-    document.getElementById(
-        "stars"
-    );
+    document.getElementById("stars");
 
-
-for (
-    let i = 0;
-    i < 55;
-    i++
-) {
+for (let i = 0; i < 55; i++) {
 
     const star =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
-    star.className =
-        "star";
-
+    star.className = "star";
 
     star.style.left =
-        Math.random() *
-        100 +
-        "%";
-
+        Math.random() * 100 + "%";
 
     star.style.top =
-        Math.random() *
-        100 +
-        "%";
-
+        Math.random() * 100 + "%";
 
     star.style.animationDuration =
-        10 +
-        Math.random() *
-        20 +
-        "s";
-
+        10 + Math.random() * 20 + "s";
 
     star.style.animationDelay =
-        Math.random() *
-        -20 +
-        "s";
-
+        Math.random() * -20 + "s";
 
     const size =
-        1 +
-        Math.random() *
-        3;
-
+        1 + Math.random() * 3;
 
     star.style.width =
-        size +
-        "px";
-
+        size + "px";
 
     star.style.height =
-        size +
-        "px";
+        size + "px";
 
-
-    stars.appendChild(
-        star
-    );
+    stars.appendChild(star);
 }
 
 
-/* ==========================================
-   LOAD CURRENT KEY
-========================================== */
+/* ==========================
+   LOAD KEY
+========================== */
 
 async function loadKey() {
 
@@ -1451,18 +988,15 @@ async function loadKey() {
             "currentKey"
         );
 
-
     const status =
         document.getElementById(
             "keyStatus"
         );
 
-
     const button =
         document.getElementById(
             "copyKeyButton"
         );
-
 
     try {
 
@@ -1470,140 +1004,96 @@ async function loadKey() {
             await fetch(
                 API_URL + "/key",
                 {
-                    cache:
-                        "no-store"
+                    cache: "no-store"
                 }
             );
 
-
         if (!response.ok) {
-
             throw new Error(
                 "HTTP " +
                 response.status
             );
-
         }
-
 
         const data =
             await response.json();
-
 
         if (
             !data.key ||
             typeof data.key !== "string"
         ) {
-
             throw new Error(
-                "Invalid API response"
+                "Invalid response"
             );
-
         }
-
 
         keyElement.textContent =
             data.key;
 
-
         status.textContent =
             "✓ Актуальный ключ загружен";
-
 
         status.style.color =
             "#72e6a0";
 
-
         button.disabled =
             false;
 
-    }
+    } catch (error) {
 
-    catch (error) {
-
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         keyElement.textContent =
             "Key unavailable";
 
-
         status.textContent =
             "✕ Не удалось получить ключ";
-
 
         status.style.color =
             "#ff7189";
 
-
         button.disabled =
             true;
-
     }
 }
 
 
-/* ==========================================
+/* ==========================
    COPY KEY
-========================================== */
+========================== */
 
 async function copyKey() {
 
     const key =
         document
-        .getElementById(
-            "currentKey"
-        )
+        .getElementById("currentKey")
         .textContent
         .trim();
-
-
-    if (
-        !key ||
-        key === "Loading..." ||
-        key === "Key unavailable"
-    ) {
-
-        return;
-
-    }
-
 
     try {
 
         await navigator.clipboard
             .writeText(key);
 
-
         const status =
             document.getElementById(
                 "keyStatus"
             );
 
-
         status.textContent =
             "✓ Key copied!";
-
 
         status.style.color =
             "#72e6a0";
 
+        setTimeout(() => {
 
-        setTimeout(
-            () => {
+            status.textContent =
+                "✓ Актуальный ключ загружен";
 
-                status.textContent =
-                    "✓ Актуальный ключ загружен";
+        }, 2000);
 
-            },
-            2000
-        );
-
-    }
-
-    catch (error) {
+    } catch {
 
         document
             .getElementById(
@@ -1611,89 +1101,53 @@ async function copyKey() {
             )
             .textContent =
             "Не удалось скопировать";
-
     }
 }
 
 
-/* ==========================================
-   COPY LOADER
-========================================== */
+/* ==========================
+   COPY SCRIPT
+========================== */
 
 async function copyLoader() {
 
     const loader =
         document
-        .getElementById(
-            "loaderCode"
-        )
+        .getElementById("loaderCode")
         .textContent
         .trim();
 
+    await navigator.clipboard
+        .writeText(loader);
 
-    try {
-
-        await navigator.clipboard
-            .writeText(
-                loader
-            );
-
-
-        const status =
-            document.getElementById(
-                "keyStatus"
-            );
-
-
-        status.textContent =
-            "✓ Script copied!";
-
-
-        status.style.color =
-            "#72e6a0";
-
-
-        setTimeout(
-            () => {
-
-                status.textContent =
-                    "✓ Актуальный ключ загружен";
-
-            },
-            2000
+    const status =
+        document.getElementById(
+            "keyStatus"
         );
 
-    }
+    status.textContent =
+        "✓ Script copied!";
 
-    catch (error) {
-
-        console.error(
-            error
-        );
-
-    }
+    status.style.color =
+        "#72e6a0";
 }
 
 
-/* ==========================================
+/* ==========================
    SECRET 67
-========================================== */
+========================== */
 
-let clicks =
-    0;
-
+let clicks = 0;
 
 const secret67 =
     document.getElementById(
         "secret67"
     );
 
-
 const secretMessage =
     document.getElementById(
         "secretMessage"
     );
-
 
 secret67.addEventListener(
     "click",
@@ -1701,59 +1155,37 @@ secret67.addEventListener(
 
         clicks++;
 
-
         secret67.style.transform =
             "scale(1.20)";
 
+        setTimeout(() => {
 
-        setTimeout(
-            () => {
+            secret67.style.transform =
+                "scale(1)";
 
-                secret67.style.transform =
-                    "scale(1)";
+        }, 120);
 
-            },
-            120
-        );
+        if (clicks >= 5) {
 
-
-        if (
-            clicks >= 5
-        ) {
+            clicks = 0;
 
             secretMessage
                 .classList
-                .add(
-                    "show"
-                );
+                .add("show");
 
+            setTimeout(() => {
 
-            clicks =
-                0;
+                secretMessage
+                    .classList
+                    .remove("show");
 
-
-            setTimeout(
-                () => {
-
-                    secretMessage
-                        .classList
-                        .remove(
-                            "show"
-                        );
-
-                },
-                2500
-            );
-
+            }, 2500);
         }
-
     }
 );
 
 
-/* ==========================================
-   START
-========================================== */
+/* START */
 
 loadKey();
 
