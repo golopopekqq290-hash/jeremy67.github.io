@@ -1,70 +1,817 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jeremy67</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            background: #09070d;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+<title>jeremy67</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background:
+            radial-gradient(circle at 20% 20%, #30165c 0%, transparent 35%),
+            radial-gradient(circle at 80% 70%, #210f42 0%, transparent 35%),
+            #08060d;
+
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* =========================
+       BACKGROUND
+       ========================= */
+
+    #stars {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+    }
+
+    .star {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: white;
+        opacity: .45;
+        animation: floatStar linear infinite;
+    }
+
+    @keyframes floatStar {
+        from {
+            transform: translateY(100vh);
         }
 
-        .main {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+        to {
+            transform: translateY(-100px);
+        }
+    }
+
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    nav {
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: min(700px, 92%);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 13px 20px;
+
+        background: rgba(20, 14, 30, .65);
+        backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 18px;
+
+        z-index: 100;
+    }
+
+    .logo {
+        color: #b78aff;
+        font-weight: 800;
+        font-size: 20px;
+    }
+
+    nav div {
+        display: flex;
+        gap: 17px;
+    }
+
+    nav a {
+        color: #c9c1d5;
+        text-decoration: none;
+        font-size: 14px;
+        transition: .2s;
+    }
+
+    nav a:hover {
+        color: #b78aff;
+    }
+
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        padding: 100px 20px 50px;
+    }
+
+    .hero-content {
+        animation: appear .8s ease;
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .mini {
+        color: #aa8dd4;
+        letter-spacing: 4px;
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    h1 {
+        font-size: clamp(60px, 12vw, 120px);
+        line-height: .95;
+
+        background: linear-gradient(
+            135deg,
+            #ffffff,
+            #d9c2ff,
+            #9565ff
+        );
+
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+
+        text-shadow: 0 0 60px rgba(149,101,255,.2);
+    }
+
+    .hero p {
+        max-width: 520px;
+        margin: 22px auto;
+
+        color: #aaa4b3;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .button {
+        display: inline-block;
+
+        padding: 13px 23px;
+
+        border-radius: 13px;
+
+        text-decoration: none;
+        color: white;
+
+        background: #8c59ef;
+
+        box-shadow:
+            0 8px 30px rgba(140,89,239,.25);
+
+        transition: .25s;
+    }
+
+    .button:hover {
+        transform: translateY(-3px) scale(1.02);
+        background: #a477ff;
+    }
+
+    .button.secondary {
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.1);
+        box-shadow: none;
+    }
+
+
+    /* =========================
+       SECTIONS
+       ========================= */
+
+    section {
+        width: min(1000px, 90%);
+        margin: auto;
+        padding: 100px 0;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+
+    .section-title p {
+        color: #8f8799;
+    }
+
+
+    /* =========================
+       CARDS
+       ========================= */
+
+    .grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(220px, 1fr));
+
+        gap: 18px;
+    }
+
+    .card {
+        min-height: 180px;
+        padding: 25px;
+
+        background: rgba(255,255,255,.045);
+
+        border:
+            1px solid rgba(255,255,255,.08);
+
+        border-radius: 20px;
+
+        backdrop-filter: blur(12px);
+
+        transition: .3s;
+    }
+
+    .card:hover {
+        transform: translateY(-7px);
+
+        border-color:
+            rgba(167,119,255,.5);
+
+        box-shadow:
+            0 20px 50px rgba(0,0,0,.25);
+    }
+
+    .card-icon {
+        font-size: 30px;
+        margin-bottom: 18px;
+    }
+
+    .card h3 {
+        margin-bottom: 9px;
+    }
+
+    .card p {
+        color: #9991a5;
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       ABOUT
+       ========================= */
+
+    .about {
+        text-align: center;
+
+        max-width: 650px;
+
+        margin: auto;
+
+        padding: 35px;
+
+        border-radius: 25px;
+
+        background:
+            rgba(255,255,255,.04);
+
+        border:
+            1px solid rgba(255,255,255,.08);
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+
+        margin: 0 auto 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        font-size: 35px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #9a65ff,
+                #4a277e
+            );
+
+        box-shadow:
+            0 0 45px rgba(149,101,255,.35);
+    }
+
+    .about p {
+        color: #aaa4b3;
+        line-height: 1.7;
+        margin-top: 13px;
+    }
+
+
+    /* =========================
+       GALLERY
+       ========================= */
+
+    .gallery {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(180px, 1fr));
+
+        gap: 15px;
+    }
+
+    .gallery-item {
+        aspect-ratio: 1;
+
+        border-radius: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 45px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(149,101,255,.17),
+                rgba(255,255,255,.03)
+            );
+
+        border:
+            1px solid rgba(255,255,255,.07);
+
+        transition: .25s;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.03);
+        border-color: #9565ff;
+    }
+
+
+    /* =========================
+       67 SECRET
+       ========================= */
+
+    #secret67 {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .secret-message {
+        position: fixed;
+
+        left: 50%;
+        bottom: 30px;
+
+        transform:
+            translateX(-50%)
+            translateY(100px);
+
+        padding: 14px 25px;
+
+        border-radius: 15px;
+
+        background: #9b67ff;
+        color: white;
+
+        opacity: 0;
+
+        transition: .4s;
+
+        z-index: 500;
+    }
+
+    .secret-message.show {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+        text-align: center;
+        padding: 50px 20px;
+
+        color: #625c6c;
+
+        font-size: 13px;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media(max-width: 600px) {
+
+        nav {
             justify-content: center;
-            align-items: center;
         }
 
-        h1 {
-            font-size: 70px;
-            margin: 0;
-            color: #a875ff;
+        nav div {
+            display: none;
         }
 
-        p {
-            color: #aaa4b3;
-            font-size: 18px;
+        section {
+            padding: 70px 0;
         }
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 15px 30px;
-            border: 0;
-            border-radius: 15px;
-            background: #9565ff;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #7b4ee8;
-        }
-    </style>
+</style>
 </head>
+
 
 <body>
 
-<div class="main">
-    <h1>jeremy67</h1>
-    <p>мой первый сайт :3</p>
 
-    <button onclick="hello()">
-        нажми меня
-    </button>
+<!-- =========================
+     STARS
+     ========================= -->
+
+<div id="stars"></div>
+
+
+<!-- =========================
+     NAV
+     ========================= -->
+
+<nav>
+
+    <span class="logo">
+        j67
+    </span>
+
+    <div>
+        <a href="#about">about</a>
+        <a href="#projects">projects</a>
+        <a href="#gallery">gallery</a>
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+     ========================= -->
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="mini">
+            WELCOME TO MY SPACE
+        </div>
+
+        <h1>
+            jeremy<span id="secret67">67</span>
+        </h1>
+
+        <p>
+            маленькое место в интернете
+            для моих проектов, рисунков
+            и всякой фигни :3
+        </p>
+
+        <div class="buttons">
+
+            <a
+                class="button"
+                href="#projects"
+            >
+                мои проекты
+            </a>
+
+            <a
+                class="button secondary"
+                href="#about"
+            >
+                обо мне
+            </a>
+
+        </div>
+
+    </div>
+
 </div>
 
+
+<!-- =========================
+     ABOUT
+     ========================= -->
+
+<section id="about">
+
+    <div class="section-title">
+        <h2>about me</h2>
+        <p>кто вообще сделал этот сайт</p>
+    </div>
+
+    <div class="about">
+
+        <div class="avatar">
+            ♡
+        </div>
+
+        <h2>
+            jeremy67
+        </h2>
+
+        <p>
+            Привет :3 Это мой маленький уголок
+            интернета. Здесь будут мои проекты,
+            рисунки и всё, что мне захочется
+            сюда добавить.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+     ========================= -->
+
+<section id="projects">
+
+    <div class="section-title">
+
+        <h2>
+            projects
+        </h2>
+
+        <p>
+            штуки которые я делаю
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="card-icon">
+                ✦
+            </div>
+
+            <h3>
+                jeremy67 tracer
+            </h3>
+
+            <p>
+                Моя программа для работы
+                с рисунками и референсами.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🎮
+            </div>
+
+            <h3>
+                Roblox
+            </h3>
+
+            <p>
+                Мои эксперименты,
+                интерфейсы и игровые проекты.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                ✎
+            </div>
+
+            <h3>
+                drawings
+            </h3>
+
+            <p>
+                Наброски, арты
+                и другие рисунки.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+     ========================= -->
+
+<section id="gallery">
+
+    <div class="section-title">
+
+        <h2>
+            gallery
+        </h2>
+
+        <p>
+            сюда потом поставим твои картинки
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <div class="gallery-item">
+            ☁
+        </div>
+
+        <div class="gallery-item">
+            ☾
+        </div>
+
+        <div class="gallery-item">
+            ♡
+        </div>
+
+        <div class="gallery-item">
+            ✦
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    made with ♡ • jeremy67 • 2026
+</footer>
+
+
+<!-- =========================
+     SECRET MESSAGE
+     ========================= -->
+
+<div
+    class="secret-message"
+    id="secretMessage"
+>
+    67 67 67 67 67 😭
+</div>
+
+
 <script>
-    function hello() {
-        alert("67 :3");
+
+/* =========================
+   STARS
+   ========================= */
+
+const stars =
+    document.getElementById("stars");
+
+for (let i = 0; i < 55; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDuration =
+        10 + Math.random() * 20 + "s";
+
+    star.style.animationDelay =
+        Math.random() * -20 + "s";
+
+    const size =
+        1 + Math.random() * 3;
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   SECRET 67
+   ========================= */
+
+let clicks = 0;
+
+const secret67 =
+    document.getElementById("secret67");
+
+const secretMessage =
+    document.getElementById(
+        "secretMessage"
+    );
+
+secret67.addEventListener(
+    "click",
+    () => {
+
+        clicks++;
+
+        secret67.style.transform =
+            "scale(1.15)";
+
+        setTimeout(
+            () => {
+                secret67.style.transform =
+                    "scale(1)";
+            },
+            100
+        );
+
+        if (clicks >= 5) {
+
+            secretMessage.classList.add(
+                "show"
+            );
+
+            clicks = 0;
+
+            setTimeout(
+                () => {
+                    secretMessage
+                        .classList
+                        .remove("show");
+                },
+                2500
+            );
+        }
     }
+);
+
 </script>
 
 </body>
