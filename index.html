@@ -571,6 +571,10 @@ footer {
     font-size: 13px;
 }
 
+
+/* EXTRA PROJECT STATUS */
+.project-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.meta-box{padding:14px 16px;border-radius:14px;background:rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.07)}.meta-label{color:#81798c;font-size:10px;font-weight:bold;letter-spacing:1.5px;margin-bottom:7px}.meta-value{color:#d9c8f7;font-size:14px;font-weight:bold}.status-dot{display:inline-block;width:8px;height:8px;margin-right:7px;border-radius:50%;background:#8d8497;box-shadow:0 0 12px currentColor}.status-online{color:#72e6a0}.status-online .status-dot{background:#72e6a0}.status-offline{color:#ff7189}.status-offline .status-dot{background:#ff7189}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.step{padding:12px;text-align:center;border-radius:13px;color:#aaa4b3;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);font-size:12px}.step b{display:block;color:#cdb2ff;margin-bottom:4px}.preview-window{margin-top:22px;overflow:hidden;border-radius:18px;background:radial-gradient(circle at 75% 25%,rgba(255,135,195,.12),transparent 32%),linear-gradient(145deg,rgba(54,31,64,.95),rgba(15,12,20,.98));border:1px solid rgba(255,135,195,.22)}.preview-top{display:flex;align-items:center;justify-content:space-between;padding:14px 17px;background:rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.06)}.preview-title{color:#ffb9dc;font-size:13px;font-weight:bold}.preview-credit{color:#8f8193;font-size:10px}.preview-body{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;padding:15px}.preview-panel{min-height:145px;padding:13px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.05)}.preview-panel strong{color:#ff87c3;font-size:10px;letter-spacing:1px}.fake-row{height:29px;margin-top:9px;border-radius:9px;background:rgba(255,255,255,.055)}.fake-row.active{background:rgba(172,72,137,.55)}.changelog{max-width:680px;margin:22px auto 0}.change{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.07)}.change:last-child{border-bottom:0}.change-version{min-width:58px;color:#b78aff;font-weight:bold}.change-text{color:#aaa4b3;font-size:14px;line-height:1.5}
+
 /* MOBILE */
 
 @media(max-width: 650px) {
@@ -835,6 +839,12 @@ footer {
             в Key System.
         </p>
 
+        <div class="project-meta">
+            <div class="meta-box"><div class="meta-label">KEY API</div><div id="apiStatus" class="meta-value"><span class="status-dot"></span>Checking...</div></div>
+            <div class="meta-box"><div class="meta-label">KEY RESET</div><div id="keyTimer" class="meta-value">--:--:--</div></div>
+        </div>
+        <div class="steps"><div class="step"><b>01</b>Copy Key</div><div class="step"><b>02</b>Copy Script</div><div class="step"><b>03</b>Enter Key</div></div>
+
 
         <div class="key-title">
             CURRENT KEY
@@ -882,6 +892,14 @@ footer {
 
         </div>
 
+    </div>
+
+    <div class="card changelog">
+        <div class="preview-window"><div class="preview-top"><span class="preview-title">FEMBOY DEV ♡</span><span class="preview-credit">by jer3my_sc0tt • R6 / R15</span></div><div class="preview-body"><div class="preview-panel"><strong>PLAYERS</strong><div class="fake-row active"></div><div class="fake-row"></div><div class="fake-row"></div></div><div class="preview-panel"><strong>ANIMATIONS</strong><div class="fake-row"></div><div class="fake-row"></div><div class="fake-row"></div></div></div></div>
+        <div class="key-title">CHANGELOG</div>
+        <div class="change"><div class="change-version">v1.0</div><div class="change-text">Key System + FEMBOY DEV integration.</div></div>
+        <div class="change"><div class="change-version">UI</div><div class="change-text">RightShift menu, player selector and automatic R6 / R15 detection.</div></div>
+        <div class="change"><div class="change-version">WEB</div><div class="change-text">Live key, API status and countdown until the next daily key.</div></div>
     </div>
 
 </section>
@@ -1039,6 +1057,8 @@ async function loadKey() {
         button.disabled =
             false;
 
+        setApiStatus(true);
+
     } catch (error) {
 
         console.error(error);
@@ -1054,6 +1074,8 @@ async function loadKey() {
 
         button.disabled =
             true;
+
+        setApiStatus(false);
     }
 }
 
@@ -1184,6 +1206,21 @@ secret67.addEventListener(
     }
 );
 
+
+
+/* API STATUS + DAILY KEY TIMER */
+function setApiStatus(online) {
+    const e=document.getElementById("apiStatus"); if(!e)return;
+    e.className="meta-value "+(online?"status-online":"status-offline");
+    e.innerHTML='<span class="status-dot"></span>'+(online?"Online":"Offline");
+}
+function updateKeyTimer(){
+    const e=document.getElementById("keyTimer"); if(!e)return;
+    const n=new Date(), r=new Date(Date.UTC(n.getUTCFullYear(),n.getUTCMonth(),n.getUTCDate()+1));
+    const t=Math.max(0,Math.floor((r-n)/1000)),h=Math.floor(t/3600),m=Math.floor((t%3600)/60),sec=t%60;
+    e.textContent=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0")+" UTC";
+}
+updateKeyTimer(); setInterval(updateKeyTimer,1000);
 
 /* START */
 
